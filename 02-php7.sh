@@ -1,6 +1,8 @@
 #!/bin/bash 
 soft=php
 version=7.0.9
+
+
 extensions=(
 "yaf" "3.0.3" ""
 "yar" "2.0.1" "--enable-msgpack"
@@ -12,7 +14,7 @@ extensions=(
 "redis" "3.0.0" ""
 "gmagick" "2.0.4RC1" "--with-gmagick=/opt/app/graphicsmagick"
 )
-
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 test -d /opt/down/${soft} && rm -rf /opt/down/${soft}
 mkdir -p /opt/down/${soft}
 cd /opt/down/${soft}
@@ -36,7 +38,7 @@ do
     ./configure ${extensions[i+2]}
 	make && make install
 done  
-cd /opt/shell
+cd $DIR
 rm -rf /opt/app/php-7.0/etc/php-fpm*
 cp files/php-fpm-70.conf /opt/app/php-7.0/etc/php-fpm.conf
 cp files/php-fpm-70 /etc/init.d/

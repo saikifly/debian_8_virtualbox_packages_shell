@@ -1,8 +1,7 @@
 #!/bin/bash 
 soft=openresty
 version=1.9.15.1
-
-
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 test -d /opt/down/${soft} && rm -rf /opt/down/${soft}
 mkdir -p /opt/down/${soft} 
 cd /opt/down/${soft}
@@ -24,7 +23,7 @@ fi
 rm  -rf /opt/down/${soft}
 
 useradd web
-
-cp /opt/shell/files/nginx /etc/init.d/nginx
+cd $DIR
+cp files/nginx /etc/init.d/nginx
 chmod +x /etc/init.d/nginx
 systemctl enable nginx
