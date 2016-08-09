@@ -1,8 +1,6 @@
 #!/bin/bash 
 soft=php
 version=7.0.9
-
-
 extensions=(
 "yaf" "3.0.3" ""
 "yar" "2.0.1" "--enable-msgpack"
